@@ -1,0 +1,147 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-04
+  使用大模型：Kimi-K3
+  功能名称：音乐手机选项卡（课堂测试8）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>音乐手机</title>
+<style>
+  /* 刘思媛：页面全局重置 */
+  * { margin: 0; padding: 0; }
+  body { font-family: "宋体", SimSun, sans-serif; }
+
+  /* 刘思媛：最外层容器，宽度与边框还原效果图 */
+  .lsy-box { width: 385px; margin: 20px auto; border: 1px solid #b5c7e0; border-top: none; background: #fff; }
+
+  /* 刘思媛：标题栏，高24px，使用 bg20.gif 横向平铺作为背景 */
+  .lsy-header { height: 24px; background: url(img/bg20.gif) repeat-x; overflow: hidden; }
+
+  /* 刘思媛：左侧"音乐手机"标题，深蓝色加粗，左侧小方块取自 dot.gif 精灵图顶部深灰点 */
+  .lsy-title { float: left; font-size: 14px; font-weight: bold; color: #03479b; line-height: 24px; padding-left: 20px; background: url(img/dot.gif) no-repeat 3px 0; }
+
+  /* 刘思媛：右侧选项卡容器 */
+  .lsy-tabs { float: right; list-style: none; }
+
+  /* 刘思媛：单个选项卡标签，高22px，未选中时使用 bg21.gif 灰白渐变背景 */
+  .lsy-tab { float: left; width: 60px; height: 22px; line-height: 22px; text-align: center; font-size: 13px; color: #000; background: url(img/bg21.gif) repeat-x; border: 1px solid #a8bdd8; border-bottom: none; margin: 1px 2px 0 0; cursor: pointer; }
+
+  /* 刘思媛：选中状态的标签，使用 bg22.gif 白底渐变，底部边框与内容区连通 */
+  .lsy-tab.lsy-current { background: url(img/bg22.gif) repeat-x; position: relative; }
+
+  /* 刘思媛：内容区域 */
+  .lsy-body { border-top: 1px solid #b5c7e0; padding: 8px 10px 12px; }
+
+  /* 刘思媛：新闻列表面板，默认隐藏 */
+  .lsy-list { list-style: none; display: none; }
+
+  /* 刘思媛：当前显示的新闻面板 */
+  .lsy-list.lsy-show { display: block; }
+
+  /* 刘思媛：每条新闻，左侧蓝色小点取自 dot.gif 精灵图 y=58 处，垂直居中于行 */
+  .lsy-list li { height: 24px; line-height: 24px; font-size: 12px; background: url(img/dot.gif) no-repeat 0 -48px; padding-left: 14px; overflow: hidden; }
+
+  /* 刘思媛：新闻标题链接，深蓝色无下划线 */
+  .lsy-list li a { float: left; color: #03479b; text-decoration: none; }
+
+  /* 刘思媛：鼠标悬停新闻标题时加粗 */
+  .lsy-list li a:hover { font-weight: bold; }
+
+  /* 刘思媛：红色重点新闻，文字红色，小点使用精灵图 y=106 处红点 */
+  .lsy-list li.lsy-hot a { color: #cc0000; }
+  .lsy-list li.lsy-hot { background-position: 0 -96px; }
+
+  /* 刘思媛：右侧日期，灰色 */
+  .lsy-date { float: right; color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="lsy-box">
+  <!-- 刘思媛：标题栏，左侧标题，右侧四个选项卡，行情为默认选中 -->
+  <div class="lsy-header">
+    <h3 class="lsy-title">音乐手机</h3>
+    <ul class="lsy-tabs">
+      <li class="lsy-tab lsy-current" data-lsy-target="lsyPanel1">行情</li>
+      <li class="lsy-tab" data-lsy-target="lsyPanel2">导购</li>
+      <li class="lsy-tab" data-lsy-target="lsyPanel3">新品</li>
+      <li class="lsy-tab" data-lsy-target="lsyPanel4">评测</li>
+    </ul>
+  </div>
+
+  <!-- 刘思媛：四个新闻列表面板，默认显示行情 -->
+  <div class="lsy-body">
+    <ul class="lsy-list lsy-show" id="lsyPanel1">
+      <li><a href="#">音乐强机苹果iPhone 5s价格稳定</a><span class="lsy-date">(12/19)</span></li>
+      <li><a href="#">高性能双四核音乐机 魅族MX3低价热卖</a><span class="lsy-date">(12/19)</span></li>
+      <li><a href="#">音乐品质最出色 vivo X3促销2199</a><span class="lsy-date">(12/12)</span></li>
+      <li><a href="#">时尚音乐手机 vivo Xplay济南2798元</a><span class="lsy-date">(11/27)</span></li>
+      <li><a href="#">好音乐好拍照 OPPO Find5今报价2580元</a><span class="lsy-date">(08/27)</span></li>
+      <li><a href="#">1.5GHz四核1080p OPPO Find 5降价热卖</a><span class="lsy-date">(07/30)</span></li>
+      <li><a href="#">彩色呼吸带双核机 索尼M35h促销2299</a><span class="lsy-date">(06/08)</span></li>
+      <li><a href="#">1.7GHz四核1080p屏 vivo Xplay热卖中</a><span class="lsy-date">(06/07)</span></li>
+    </ul>
+    <ul class="lsy-list" id="lsyPanel2">
+      <li><a href="#">优秀音效漂亮外观 市售音乐手机盘点</a><span class="lsy-date">(09/13)</span></li>
+      <li><a href="#">不要虐待耳朵 8款独特音效的音乐手机荐</a><span class="lsy-date">(09/06)</span></li>
+      <li><a href="#">最低只要799 9款高性能音乐手机推荐</a><span class="lsy-date">(07/22)</span></li>
+      <li><a href="#">长假主导后高考时代 奖励孩子的智能手机全攻略</a><span class="lsy-date">(06/13)</span></li>
+      <li><a href="#">降价不限时 端午后值得关注降价四核机推荐</a><span class="lsy-date">(06/13)</span></li>
+      <li><a href="#">高考之后尽情狂欢！学生超强手机推荐</a><span class="lsy-date">(06/13)</span></li>
+      <li><a href="#">上半年看这里 最热1080P四核旗舰手机</a><span class="lsy-date">(06/13)</span></li>
+      <li><a href="#">最厚不过7.99毫米 热门超薄强机大搜罗</a><span class="lsy-date">(06/08)</span></li>
+    </ul>
+    <ul class="lsy-list" id="lsyPanel3">
+      <li><a href="#">无限接近完美！vivo Xplay3S现场体验</a><span class="lsy-date">(12/19)</span></li>
+      <li><a href="#">入门音乐机 诺基亚Lumia 525现身工信部</a><span class="lsy-date">(11/05)</span></li>
+      <li><a href="#">传诺基亚下月将推首款WP音乐手机Glee</a><span class="lsy-date">(09/29)</span></li>
+      <li><a href="#">软硬兼施 vivo Xstudio Hi-Fi音乐圈讲解</a><span class="lsy-date">(08/23)</span></li>
+      <li><a href="#">没有中国 谷歌All Access音乐服务登欧洲</a><span class="lsy-date">(08/09)</span></li>
+      <li><a href="#">Hi-Fi录音棚 vivo X3创Xtudio音乐系统</a><span class="lsy-date">(08/07)</span></li>
+      <li class="lsy-hot"><a href="#">Hi-Fi不够vivo又玩录音棚 X3音乐处理方案曝光</a><span class="lsy-date">(08/06)</span></li>
+      <li><a href="#">小伙伴都惊呆了 薄至6mm以下vivo X3终露面</a><span class="lsy-date">(07/31)</span></li>
+    </ul>
+    <ul class="lsy-list" id="lsyPanel4">
+      <li><a href="#">音乐历久弥新 TD版魅族MX3评测</a><span class="lsy-date">(12/19)</span></li>
+      <li><a href="#">极致影音完美音质 步步高vivo Xplay移动版图赏</a><span class="lsy-date">(07/24)</span></li>
+      <li><a href="#">都是大屏何不同？三星S4/Mega静态评测</a><span class="lsy-date">(06/20)</span></li>
+      <li><a href="#">超值四核智能机 HTC Desire 608t评测</a><span class="lsy-date">(06/20)</span></li>
+      <li><a href="#">完美融合微博 魅族MX2 Flyme 2.2.5体验</a><span class="lsy-date">(06/18)</span></li>
+      <li><a href="#">1080p屏Hi-Fi旗舰 vivo Xplay娱乐体验</a><span class="lsy-date">(06/13)</span></li>
+      <li><a href="#">5.7英寸高清巨屏 酷派9070+XO影音体验</a><span class="lsy-date">(06/06)</span></li>
+      <li><a href="#">悬浮窗口播放 vivo Xplay视频功能体验</a><span class="lsy-date">(06/06)</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // 刘思媛：初始化音乐手机选项卡，为四个标签绑定点击事件实现面板切换
+  function lsyInitTab() {
+    // 刘思媛：获取所有标签与新闻面板
+    var lsyTabs = document.querySelectorAll('.lsy-tab');
+    var lsyPanels = document.querySelectorAll('.lsy-list');
+
+    lsyTabs.forEach(function (lsyTab) {
+      // 刘思媛：监听标签点击事件，先清除所有选中状态，再设置当前元素为选中状态
+      lsyTab.addEventListener('click', function () {
+        // 刘思媛：清除所有标签的选中类和所有面板的显示类
+        lsyTabs.forEach(function (lsyItem) { lsyItem.classList.remove('lsy-current'); });
+        lsyPanels.forEach(function (lsyPanel) { lsyPanel.classList.remove('lsy-show'); });
+
+        // 刘思媛：设置当前标签为选中状态，并显示其对应的面板
+        lsyTab.classList.add('lsy-current');
+        var lsyTargetId = lsyTab.getAttribute('data-lsy-target');
+        document.getElementById(lsyTargetId).classList.add('lsy-show');
+      });
+    });
+  }
+
+  // 刘思媛：页面加载完成后初始化选项卡
+  lsyInitTab();
+</script>
+
+</body>
+</html>
