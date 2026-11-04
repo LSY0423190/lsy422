@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "48426824",
+      "name": "资源 253",
+      "font_class": "a-ziyuan253",
+      "unicode": "e794",
+      "unicode_decimal": 59284
+    },
+    {
+      "icon_id": "48426833",
+      "name": "地球仪",
+      "font_class": "diqiuyi",
+      "unicode": "e795",
+      "unicode_decimal": 59285
+    },
+    {
+      "icon_id": "48426834",
+      "name": "耳机",
+      "font_class": "erji",
+      "unicode": "e796",
+      "unicode_decimal": 59286
+    },
+    {
+      "icon_id": "48426843",
+      "name": "画画",
+      "font_class": "huahua",
+      "unicode": "e797",
+      "unicode_decimal": 59287
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端视口 必须写-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>京东搜索-充电宝</title>
+    <style>
+        /* 全局重置 学号：24002120422 姓名：刘思媛 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul, li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        img {
+            width: 100%;
+            display: block;
+            border: none;
+        }
+        body {
+            font-family: "Microsoft Yahei", sans-serif;
+            font-size: 14px;
+            background-color: #f4f4f4;
+        }
+        .jd-red {
+            color: #e6162d;
+        }
+        .jd-red-bg {
+            background-color: #e6162d;
+            color:#fff;
+        }
+        .jd-green-text{
+            color:#009e4f;
+        }
+
+        /* ========== 1.顶部搜索栏 stu_li_search ========== */
+        .stu_li_search{
+            width:100%;
+            background:#fff;
+            padding:12px 14px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .search-input-box{
+            flex:1;
+            border:1px solid #ddd;
+            border-radius:22px;
+            padding:8px 14px;
+            display:flex;
+            align-items:center;
+        }
+        .search-input-box input{
+            border:none;
+            outline:none;
+            flex:1;
+            font-size:14px;
+        }
+        .search-camera{
+            width:20px;
+        }
+        .search-icon-more{
+            width:24px;
+        }
+
+        /* ==========2. 顶部Tab标签：全部、新品、秒送 stu_li_tab ========== */
+        .stu_li_tab{
+            background:#fff;
+            display:flex;
+        }
+        .tab-item{
+            flex:1;
+            text-align:center;
+            padding:12px 0;
+            font-size:16px;
+        }
+        .tab-item.active{
+            color:#e6162d;
+            font-weight:bold;
+            border-bottom:2px solid #e6162d;
+        }
+
+        /* ==========3.热门趋势横向滚动标签 stu_li_hot_tag ========== */
+        .stu_li_hot_tag{
+            background:#fff;
+            padding:14px;
+            margin-top:8px;
+        }
+        .hot-title{
+            font-size:15px;
+            margin-bottom:10px;
+            color:#555;
+        }
+        .hot-scroll-wrap{
+            display:flex;
+            gap:16px;
+            overflow-x:auto;
+            padding-bottom:6px;
+        }
+        .hot-scroll-wrap::-webkit-scrollbar{
+            height:0;
+        }
+        .hot-item{
+            text-align:center;
+            flex-shrink:0;
+            width:70px;
+        }
+        .hot-item-img{
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:#f3f3f3;
+            margin:0 auto 6px;
+        }
+
+        /* ==========4.筛选标签栏 stu_li_filter ========== */
+        .stu_li_filter{
+            background:#fff;
+            margin:8px 0;
+            padding:10px 14px;
+            display:flex;
+            gap:8px;
+            overflow-x:auto;
+        }
+        .stu_li_filter::-webkit-scrollbar{
+            height:0;
+        }
+        .filter-tag{
+            flex-shrink:0;
+            border:1px solid #ddd;
+            border-radius:16px;
+            padding:4px 10px;
+            font-size:13px;
+        }
+        .filter-tag.active{
+            border-color:#e6162d;
+            color:#e6162d;
+        }
+
+        /* ==========5.商品列表容器【双列】 stu_li_goods_wrap ========== */
+        .stu_li_goods_wrap{
+            padding:0 8px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            margin-bottom:20px;
+        }
+        .stu_li_goods_card{
+            width: calc(50% - 5px);
+            background:#fff;
+            border-radius:8px;
+            overflow:hidden;
+        }
+        .goods-img{
+            width:100%;
+        }
+        .goods-info{
+            padding:8px;
+        }
+        .goods-tip-row{
+            display:flex;
+            gap:4px;
+            flex-wrap:wrap;
+            margin-bottom:6px;
+        }
+        .tip-small{
+            font-size:11px;
+            padding:2px 4px;
+            border-radius:3px;
+        }
+        .tip-red{
+            background:#e6162d;
+            color:#fff;
+        }
+        .tip-green{
+            background:#eaf8f0;
+            color:#009e4f;
+        }
+        .goods-title{
+            font-size:13px;
+            line-height:1.4;
+            display: -webkit-box;
+            -webkit-line-clamp:2;
+            line-clamp:2;
+            -webkit-box-orient:vertical;
+            overflow:hidden;
+            margin-bottom:8px;
+        }
+        .goods-price{
+            font-size:17px;
+            color:#e6162d;
+            font-weight:bold;
+        }
+        .goods-sub-text{
+            font-size:12px;
+            color:#888;
+            margin-top:4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.顶部搜索栏 -->
+    <div class="stu_li_search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#333"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 009.5 3 6.5 6.5 0 003 9.5 6.5 6.5 0 009.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+        <div class="search-input-box">
+            <input type="text" placeholder="大容量充电宝" value="大容量充电宝">
+            <img class="search-camera" src="./7.jpg" alt="拍照搜索">
+        </div>
+        <img class="search-icon-more" src="./6.jpg" alt="更多">
+    </div>
+
+    <!--2.Tab栏 全部/新品/秒送-->
+    <div class="stu_li_tab">
+        <div class="tab-item active">全部</div>
+        <div class="tab-item">新品</div>
+        <div class="tab-item">秒送</div>
+        <div class="tab-item">店铺</div>
+        <div class="tab-item">口碑</div>
+    </div>
+
+    <!--3.热门趋势横向标签-->
+    <div class="stu_li_hot_tag">
+        <div class="hot-title">热门趋势</div>
+        <div class="hot-scroll-wrap">
+            <div class="hot-item">
+                <div class="hot-item-img">
+                    <img src="./1.jpg" alt="可充手表">
+                </div>
+                <span>可充手表</span>
+            </div>
+            <div class="hot-item">
+                <div class="hot-item-img">
+                    <img src="./2.jpg" alt="磁吸">
+                </div>
+                <span>磁吸</span>
+            </div>
+            <div class="hot-item">
+                <div class="hot-item-img">
+                    <img src="./3.jpg" alt="多合一">
+                </div>
+                <span>多合一</span>
+            </div>
+            <div class="hot-item">
+                <div class="hot-item-img">
+                    <img src="./4.jpg" alt="3c认证">
+                </div>
+                <span>3c认证</span>
+            </div>
+            <div class="hot-item">
+                <div class="hot-item-img">
+                    <img src="./5.jpg" alt="新国标">
+                </div>
+                <span>新国标</span>
+            </div>
+        </div>
+    </div>
+
+    <!--4.筛选标签栏-->
+    <div class="stu_li_filter">
+        <div class="filter-tag active">11.11低价热卖</div>
+        <div class="filter-tag">京东物流</div>
+        <div class="filter-tag">明日达</div>
+        <div class="filter-tag jd-green-text">国家补贴</div>
+        <div class="filter-tag">官方直降</div>
+        <div class="filter-tag">好物不凑单</div>
+    </div>
+
+    <!--5.双列商品卡片列表，和截图一模一样布局-->
+    <div class="stu_li_goods_wrap">
+        <!--商品卡片1-->
+        <div class="stu_li_goods_card">
+            <div class="goods-img">
+                <img src="./商品1.jpg" alt="充电宝">
+            </div>
+            <div class="goods-info">
+                <div class="goods-tip-row">
+                    <span class="tip-small tip-red">11.11</span>
+                    <span class="tip-small tip-green">京东物流</span>
+                </div>
+                <div class="goods-title">适璞80000M超大容量充电宝120W超级快充自带双线全兼容</div>
+                <div class="goods-price">¥136.84</div>
+                <div class="goods-sub-text">补贴到手价</div>
+            </div>
+        </div>
+        <!--商品卡片2-->
+        <div class="stu_li_goods_card">
+            <div class="goods-img">
+                <img src="./商品2.jpg" alt="充电宝">
+            </div>
+            <div class="goods-info">
+                <div class="goods-tip-row">
+                    <span class="tip-small tip-red">11.11</span>
+                    <span class="tip-small tip-green">自营</span>
+                </div>
+                <div class="goods-title">OYOCO 20000毫安自带线充电宝，满足全设备快充</div>
+                <div class="goods-price">¥104.8</div>
+                <div class="goods-sub-text">到手价 ¥177.8</div>
+            </div>
+        </div>
+        <!--商品卡片3-->
+        <div class="stu_li_goods_card">
+            <div class="goods-img">
+                <img src="./商品3.jpg" alt="充电宝">
+            </div>
+            <div class="goods-info">
+                <div class="goods-tip-row">
+                    <span class="tip-small tip-red">11.11</span>
+                </div>
+                <div class="goods-title">得力20000毫安PD20W双向快充充电宝22.5W超级快充</div>
+                <div class="goods-price">¥89.00</div>
+                <div class="goods-sub-text">可上飞机</div>
+            </div>
+        </div>
+        <!--商品卡片4-->
+        <div class="stu_li_goods_card">
+            <div class="goods-img">
+                <img src="./商品4.jpg" alt="充电宝">
+            </div>
+            <div class="goods-info">
+                <div class="goods-tip-row">
+                    <span class="tip-small tip-red">11.11</span>
+                </div>
+                <div class="goods-title">1000000超级闪充充电宝，120W超级快充坏了免费换新</div>
+                <div class="goods-price">¥159.00</div>
+                <div class="goods-sub-text">快充100次</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+// JS效果1：点击Tab切换激活（作业要求JS至少6个，这是第1个）
+const tabs = document.querySelectorAll('.tab-item');
+tabs.forEach(item=>{
+    item.onclick = function(){
+        tabs.forEach(t=>t.classList.remove('active'));
+        this.classList.add('active');
+    }
+})
+
+// JS效果2：商品卡片点击，弹出商品名称（第2个JS效果）
+const goodsCards = document.querySelectorAll('.stu_li_goods_card');
+goodsCards.forEach(card=>{
+    card.onclick = function(){
+        const title = this.querySelector('.goods-title').innerText;
+        alert("你点击商品："+title);
+    }
+})
+</script>
+</body>
+</html>
