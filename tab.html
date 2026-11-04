@@ -1,0 +1,68 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-04
+  使用大模型：Kimi-K3
+  功能名称：新闻 Tab 选项卡页面
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新闻中心</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", sans-serif; background: #f5f5f5; }
+  .tabs { width: 800px; margin: 40px auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .tab-header { display: flex; border-bottom: 2px solid #e8e8e8; }
+  .tab-btn { flex: 1; padding: 14px 0; border: none; background: #fff; font-size: 16px; cursor: pointer; color: #333; transition: all .2s; }
+  .tab-btn:hover { color: #d43d3d; }
+  .tab-btn.active { color: #d43d3d; font-weight: bold; border-bottom: 3px solid #d43d3d; margin-bottom: -2px; }
+  .tab-body { padding: 20px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .tab-panel li { list-style: none; padding: 10px 0; border-bottom: 1px dashed #ddd; font-size: 15px; color: #444; }
+  .tab-panel li:hover { color: #d43d3d; }
+</style>
+</head>
+<body>
+
+<div class="tabs" id="newsTabs">
+  <div class="tab-header">
+    <button class="tab-btn active" data-target="domestic">国内新闻</button>
+    <button class="tab-btn" data-target="province">省内新闻</button>
+    <button class="tab-btn" data-target="international">国际新闻</button>
+    <button class="tab-btn" data-target="hot">最热新闻</button>
+  </div>
+  <div class="tab-body">
+    <ul class="tab-panel active" id="domestic">
+      <li>全国科技创新大会在北京召开</li>
+      <li>多地出台措施促进消费市场回暖</li>
+      <li>国家铁路发送旅客量创同期新高</li>
+    </ul>
+    <ul class="tab-panel" id="province">
+      <li>省内重点项目建设加快推进</li>
+      <li>全省秋粮收获进度已过八成</li>
+      <li>本地文旅市场迎来秋季小高峰</li>
+    </ul>
+    <ul class="tab-panel" id="international">
+      <li>联合国气候大会达成新共识</li>
+      <li>多国签署新一轮经贸合作协议</li>
+      <li>国际奥委会公布下届赛事筹备进展</li>
+    </ul>
+    <ul class="tab-panel" id="hot">
+      <li>🔥 新能源汽车单月销量再创新高</li>
+      <li>🔥 人工智能应用落地提速引关注</li>
+      <li>🔥 周末全国景区门票预订量翻倍</li>
+    </ul>
+  </div>
+</div>
+
+<script src="js/tab.js"></script>
+<script>
+  // 初始化新闻选项卡组件
+  initTabs('#newsTabs');
+</script>
+
+</body>
+</html>
