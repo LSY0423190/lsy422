@@ -1,0 +1,3 @@
+# 作者：刘思媛 —— 忽略 Trae 分享包缓存与截图缓存
+.trae-html-share-packages/
+.screenshots/

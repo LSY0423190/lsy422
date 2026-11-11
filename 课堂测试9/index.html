@@ -1,0 +1,568 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-11
+  使用大模型：Kimi-K3
+  功能名称：Swiper 轮播组件库课堂任务演示页
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大国重器光影展 · Swiper 轮播课堂任务</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 首屏标题区 -->
+  <header class="lsy-hero">
+    <p class="lsy-hero-kicker">高职 · 高级网页设计 · 组件库专题</p>
+    <h1 class="lsy-hero-title">大国重器<span>光影展</span></h1>
+    <p class="lsy-hero-desc">用 Swiper 把中国的科技名片轮播给全世界 —— 三层骨架 · 分页导航 · 自动播放 · 七种切换效果 · 键盘控制</p>
+    <div class="lsy-hero-tags">
+      <span>① 最小轮播</span>
+      <span>② 分页器与导航</span>
+      <span>③ 自动播放</span>
+      <span>④ 七种 effect</span>
+      <span>⑤ 键盘控制</span>
+    </div>
+  </header>
+
+  <!-- 顶部锚点导航 -->
+  <nav class="lsy-nav">
+    <a href="#lsyDemo1">演示一 · 最小轮播</a>
+    <a href="#lsyDemo2">演示二 · 分页导航</a>
+    <a href="#lsyDemo3">演示三 · 自动播放</a>
+    <a href="#lsyDemo4">演示四 · 效果实验台</a>
+    <a href="#lsyGallery">展品墙 · 键盘切换</a>
+    <a href="#lsyTasks">任务交付</a>
+  </nav>
+
+  <main class="lsy-main">
+
+    <!-- 演示一：最小轮播 -->
+    <section class="lsy-section" id="lsyDemo1">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">01</span>
+        <h2>最小轮播 · 三层骨架</h2>
+      </div>
+      <p class="lsy-sec-desc">
+        <code>swiper</code> 是相框，<code>swiper-wrapper</code> 是胶卷，每一张 <code>swiper-slide</code> 是照片。
+        这个版本没有按钮、没有圆点，但已经可以用鼠标拖动、用手机触摸滑动。
+      </p>
+
+      <div class="swiper lsy-demo" id="lsySw1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/01-tiangong.jpg" alt="天宫空间站">
+            <div class="lsy-slide-cap">
+              <h3>天宫空间站</h3>
+              <p>2022 年全面建成 · 中国人的太空家园</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/02-fuxing.jpg" alt="复兴号动车组">
+            <div class="lsy-slide-cap">
+              <h3>复兴号动车组</h3>
+              <p>350 km/h · 世界商业运营最高时速</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/03-c919.jpg" alt="C919 大飞机">
+            <div class="lsy-slide-cap">
+              <h3>C919 大飞机</h3>
+              <p>2023 年商业首航 · 国产干线客机翱翔蓝天</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/04-fendouzhe.jpg" alt="奋斗者号">
+            <div class="lsy-slide-cap">
+              <h3>奋斗者号</h3>
+              <p>10909 米 · 坐底马里亚纳海沟</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/05-fast.jpg" alt="中国天眼 FAST">
+            <div class="lsy-slide-cap">
+              <h3>中国天眼 FAST</h3>
+              <p>500 米口径 · 世界最大单口径射电望远镜</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pre class="lsy-code"><code>&lt;div class="swiper"&gt;                      &lt;!-- 相框 --&gt;
+  &lt;div class="swiper-wrapper"&gt;           &lt;!-- 胶卷 --&gt;
+    &lt;div class="swiper-slide"&gt;…&lt;/div&gt;     &lt;!-- 照片 × N 张 --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  var lsyMinimalSwiper = new Swiper('#lsySw1', {});
+&lt;/script&gt;</code></pre>
+    </section>
+
+    <!-- 演示二：分页器与导航 -->
+    <section class="lsy-section" id="lsyDemo2">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">02</span>
+        <h2>分页器与导航按钮</h2>
+      </div>
+      <p class="lsy-sec-desc">
+        <code>pagination</code> 是底部圆点（可点击跳转），<code>navigation</code> 是两侧前后箭头，
+        <code>loop</code> 让最后一张再往后能无缝回到第一张。
+      </p>
+
+      <div class="swiper lsy-demo" id="lsySw2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/01-tiangong.jpg" alt="天宫空间站">
+            <div class="lsy-slide-cap">
+              <h3>天宫空间站</h3>
+              <p>三舱结构 · 神舟乘组常年值守</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/02-fuxing.jpg" alt="复兴号动车组">
+            <div class="lsy-slide-cap">
+              <h3>复兴号动车组</h3>
+              <p>京张高铁智能驾驶 · 百年京张到智能京张</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/03-c919.jpg" alt="C919 大飞机">
+            <div class="lsy-slide-cap">
+              <h3>C919 大飞机</h3>
+              <p>让中国人的大飞机梦照进现实</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/04-fendouzhe.jpg" alt="奋斗者号">
+            <div class="lsy-slide-cap">
+              <h3>奋斗者号</h3>
+              <p>坐底万米 · 深海探测进入「中国时代」</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/05-fast.jpg" alt="中国天眼 FAST">
+            <div class="lsy-slide-cap">
+              <h3>中国天眼 FAST</h3>
+              <p>南仁东先生 22 年铸就的观天巨目</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev lsy-nav-btn" id="lsyPrev2"></div>
+        <div class="swiper-button-next lsy-nav-btn" id="lsyNext2"></div>
+        <div class="swiper-pagination lsy-pag" id="lsyPag2"></div>
+      </div>
+
+      <pre class="lsy-code"><code>var lsyPagerSwiper = new Swiper('#lsySw2', {
+  loop: true,                                             // 无缝循环
+  speed: 600,                                             // 切换动画 600ms
+  pagination: { el: '#lsyPag2', clickable: true },        // 圆点可点击
+  navigation: { nextEl: '#lsyNext2', prevEl: '#lsyPrev2' } // 前后箭头
+});</code></pre>
+    </section>
+
+    <!-- 演示三：自动播放 -->
+    <section class="lsy-section" id="lsyDemo3">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">03</span>
+        <h2>自动播放与循环</h2>
+      </div>
+      <p class="lsy-sec-desc">
+        <code>autoplay.delay</code> 控制每张停留的毫秒数，<code>disableOnInteraction: false</code>
+        表示用户手动滑动之后自动播放不停止。这里每 2.6 秒翻一页，什么都不用做，看着就行。
+      </p>
+
+      <div class="swiper lsy-demo" id="lsySw3">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/01-tiangong.jpg" alt="天宫空间站">
+            <div class="lsy-slide-cap">
+              <h3>天宫空间站</h3>
+              <p>巡天遥看一千河</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/02-fuxing.jpg" alt="复兴号动车组">
+            <div class="lsy-slide-cap">
+              <h3>复兴号动车组</h3>
+              <p>中国速度 · 风驰电掣</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/03-c919.jpg" alt="C919 大飞机">
+            <div class="lsy-slide-cap">
+              <h3>C919 大飞机</h3>
+              <p>蓝天之上 · 大国担当</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/04-fendouzhe.jpg" alt="奋斗者号">
+            <div class="lsy-slide-cap">
+              <h3>奋斗者号</h3>
+              <p>万米深潜 · 无畏探索</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/05-fast.jpg" alt="中国天眼 FAST">
+            <div class="lsy-slide-cap">
+              <h3>中国天眼 FAST</h3>
+              <p>仰望星空 · 脚踏实地</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination lsy-pag" id="lsyPag3"></div>
+      </div>
+
+      <pre class="lsy-code"><code>var lsyAutoSwiper = new Swiper('#lsySw3', {
+  loop: true,
+  autoplay: {
+    delay: 2600,                        // 每张停留 2.6 秒
+    disableOnInteraction: false         // 用户拖动后自动播放继续
+  },
+  speed: 700,
+  pagination: { el: '#lsyPag3', clickable: true }
+});</code></pre>
+    </section>
+
+    <!-- 演示四：效果实验台 -->
+    <section class="lsy-section" id="lsyDemo4">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">04</span>
+        <h2>切换效果实验台 · 七种气质</h2>
+      </div>
+      <p class="lsy-sec-desc">
+        改一个 <code>effect</code> 参数，轮播立刻换一种「性格」。前六种是课堂内容，
+        第七种 <code>creative</code> 是课堂未讲解、按任务二自学实现的自定义电影墙。
+      </p>
+
+      <div class="lsy-effect-bar">
+        <button class="lsy-effect-btn lsy-effect-btn--active" data-effect="slide">slide 平推</button>
+        <button class="lsy-effect-btn" data-effect="fade">fade 淡入淡出</button>
+        <button class="lsy-effect-btn" data-effect="cube">cube 3D 立方体</button>
+        <button class="lsy-effect-btn" data-effect="coverflow">coverflow 画廊堆叠</button>
+        <button class="lsy-effect-btn" data-effect="flip">flip 翻页</button>
+        <button class="lsy-effect-btn" data-effect="cards">cards 卡片</button>
+        <button class="lsy-effect-btn" data-effect="creative">creative 电影墙</button>
+      </div>
+
+      <div class="lsy-tune">
+        <label class="lsy-tune-label" for="lsyRotateRange">
+          creative 卡片倾斜角度：<b id="lsyRotateVal">26</b>°
+        </label>
+        <input class="lsy-tune-range" type="range" id="lsyRotateRange" min="0" max="40" step="1" value="26">
+        <span class="lsy-tune-hint">答辩演示：切到「creative 电影墙」后把滑块拖到 20°，看上一张与下一张的倾斜变化</span>
+      </div>
+
+      <div class="swiper lsy-demo" id="lsySw4">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/01-tiangong.jpg" alt="天宫空间站">
+            <div class="lsy-slide-cap">
+              <h3>天宫空间站</h3>
+              <p>试试上面的效果按钮</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/02-fuxing.jpg" alt="复兴号动车组">
+            <div class="lsy-slide-cap">
+              <h3>复兴号动车组</h3>
+              <p>同一组照片，七种讲述方式</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/03-c919.jpg" alt="C919 大飞机">
+            <div class="lsy-slide-cap">
+              <h3>C919 大飞机</h3>
+              <p>企业官网爱用 fade</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/04-fendouzhe.jpg" alt="奋斗者号">
+            <div class="lsy-slide-cap">
+              <h3>奋斗者号</h3>
+              <p>游戏网站爱用 cube</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/05-fast.jpg" alt="中国天眼 FAST">
+            <div class="lsy-slide-cap">
+              <h3>中国天眼 FAST</h3>
+              <p>相册页面爱用 coverflow</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/06-ada-magic-city.jpg" alt="爱达·魔都号">
+            <div class="lsy-slide-cap">
+              <h3>爱达·魔都号</h3>
+              <p>第六件展品 · 2024 年 1 月首航</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev lsy-nav-btn" id="lsyPrev4"></div>
+        <div class="swiper-button-next lsy-nav-btn" id="lsyNext4"></div>
+        <div class="swiper-pagination lsy-pag" id="lsyPag4"></div>
+      </div>
+
+      <pre class="lsy-code"><code>// 核心思路：切换效果时销毁旧实例 → 还原幻灯片结构 → 用新配置重建
+var lsyEffectSwiper = new Swiper('#lsySw4', {
+  loop: true,
+  speed: 800,
+  autoplay: { delay: 3200, disableOnInteraction: false },
+  pagination: { el: '#lsyPag4', clickable: true },
+  effect: 'creative',                 // 第七种：课堂未讲的自定义变换
+  creativeEffect: {
+    prev: { translate: ['-38%', 0, -240], rotate: [0, 26, 0], scale: 0.72, opacity: 0.55 },
+    next: { translate: ['42%', 0, -240], rotate: [0, -18, 0], scale: 0.86, opacity: 0.55 }
+  }
+});</code></pre>
+    </section>
+
+    <!-- 展品墙：键盘控制 -->
+    <section class="lsy-section" id="lsyGallery">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">05</span>
+        <h2>完整展品墙 · 键盘左右键切换</h2>
+      </div>
+      <p class="lsy-sec-desc">
+        第六件展品「爱达·魔都号」按任务三要求补充，图片为 AI 生成的 16:9 横版。
+        超纲能力选择 <code>keyboard</code>：<strong>先点一下轮播让焦点进入，再按 ← / → 键即可切换</strong>。
+      </p>
+
+      <div class="swiper lsy-gallery" id="lsyGallerySw" tabindex="0">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/01-tiangong.jpg" alt="天宫空间站">
+            <div class="lsy-slide-cap">
+              <h3>天宫空间站</h3>
+              <p>2022 年全面建成 · 中国人的太空家园</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/02-fuxing.jpg" alt="复兴号动车组">
+            <div class="lsy-slide-cap">
+              <h3>复兴号动车组</h3>
+              <p>350 km/h · 世界商业运营最高时速</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/03-c919.jpg" alt="C919 大飞机">
+            <div class="lsy-slide-cap">
+              <h3>C919 大飞机</h3>
+              <p>2023 年商业首航 · 国产干线客机</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/04-fendouzhe.jpg" alt="奋斗者号">
+            <div class="lsy-slide-cap">
+              <h3>奋斗者号</h3>
+              <p>10909 米 · 坐底马里亚纳海沟</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/05-fast.jpg" alt="中国天眼 FAST">
+            <div class="lsy-slide-cap">
+              <h3>中国天眼 FAST</h3>
+              <p>500 米口径 · 世界最大单口径射电望远镜</p>
+            </div>
+          </div>
+          <div class="swiper-slide lsy-slide">
+            <img class="lsy-slide-img" src="img/06-ada-magic-city.jpg" alt="爱达·魔都号">
+            <div class="lsy-slide-cap">
+              <h3>爱达·魔都号</h3>
+              <p>2024 年 1 月首航 · 首艘国产大型邮轮</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev lsy-nav-btn" id="lsyGalleryPrev"></div>
+        <div class="swiper-button-next lsy-nav-btn" id="lsyGalleryNext"></div>
+        <div class="swiper-pagination lsy-pag" id="lsyGalleryPag"></div>
+      </div>
+
+      <p class="lsy-tip">提示：轮播获得焦点后按 ← / →，或者直接点击两侧箭头。</p>
+    </section>
+
+    <!-- 任务交付 -->
+    <section class="lsy-section lsy-tasks" id="lsyTasks">
+      <div class="lsy-sec-head">
+        <span class="lsy-sec-num">06</span>
+        <h2>课堂任务交付记录</h2>
+      </div>
+
+      <article class="lsy-card">
+        <h3>任务一 · 提示词工程师 <span class="lsy-badge">⭐⭐</span></h3>
+        <p class="lsy-card-desc">
+          需求拆解：① 无缝循环 ② 3.2 秒自动翻页且手动操作后不停止 ③ 圆点分页器可点击 ④ 初始效果 cube。
+        </p>
+
+        <div class="lsy-prompt">
+          <h4>第 1 轮提示词</h4>
+          <p class="lsy-quote">用 Swiper 11 给 #lsySw4 写一份轮播配置：要循环播放，要自动播放，带圆点分页器，效果用 cube。</p>
+          <h4>第 1 轮 AI 输出（节选）</h4>
+          <pre class="lsy-code"><code>new Swiper('#lsySw4', {
+  loop: true,
+  autoplay: true,
+  effect: 'cube',
+  pagination: '.swiper-pagination'
+});</code></pre>
+          <h4>问题诊断</h4>
+          <ul class="lsy-list">
+            <li>漏了 <code>delay: 3200</code>，自动播放会按默认 3000ms 走，不是 3.2 秒。</li>
+            <li>漏了 <code>disableOnInteraction: false</code>，这是 Swiper 的默认行为，用户一拖动自动播放就停了。</li>
+            <li><code>pagination</code> 只写了字符串选择器，没有 <code>clickable: true</code>，圆点点了不跳转。</li>
+          </ul>
+        </div>
+
+        <div class="lsy-prompt">
+          <h4>第 2 轮提示词（把需求逐条编号，要求逐条对应）</h4>
+          <p class="lsy-quote">
+            请严格按 4 条硬需求输出配置，并逐条编号说明：① <code>loop</code> 为 true 实现无缝循环；
+            ② <code>autoplay.delay</code> 为 3200，且用户拖动后自动播放不停止；③ 分页器绑定到 <code>#lsyPag4</code>
+            且圆点可点击；④ <code>effect</code> 初始为 cube，并给出 <code>cubeEffect</code> 的立体阴影配置。
+            只输出 new Swiper 的配置对象，不要多余解释，最后用表格把每个参数对应到需求编号。
+          </p>
+          <h4>第 2 轮 AI 输出</h4>
+          <pre class="lsy-code"><code>new Swiper('#lsySw4', {
+  loop: true,                                   // 需求① 无缝循环
+  autoplay: {
+    delay: 3200,                                // 需求② 每 3.2 秒翻页
+    disableOnInteraction: false                 // 需求② 拖动后继续自动播放
+  },
+  pagination: { el: '#lsyPag4', clickable: true }, // 需求③ 圆点可点击
+  effect: 'cube',                               // 需求④ 初始立方体
+  cubeEffect: { shadow: true, slideShadows: true },
+  speed: 800
+});</code></pre>
+          <h4>验证结论</h4>
+          <ul class="lsy-list">
+            <li>循环：最后一张继续向后翻回到第一张，无缝 ✔</li>
+            <li>自动播放：实测约 3.2 秒翻一页，拖动再松手后仍继续自动播放 ✔</li>
+            <li>分页器：点击任意圆点直接跳到对应展品 ✔</li>
+            <li>初始效果：打开页面即为立方体翻转，且每张带阴影 ✔</li>
+          </ul>
+        </div>
+
+        <p class="lsy-answer">
+          <strong>答辩预演：</strong>第一版提示词漏掉了「3.2 秒」和「拖动后不停」两个细节，把 <code>autoplay</code>
+          草草写成 <code>true</code>；第二轮改成逐条编号需求、并把参数名直接写进提示词，AI 才逐项对齐。
+          这说明提示词越具体，返工越少。
+        </p>
+      </article>
+
+      <article class="lsy-card">
+        <h3>任务二 · creative 电影墙 <span class="lsy-badge">⭐⭐⭐</span></h3>
+        <p class="lsy-card-desc">
+          在演示四新增第 7 个按钮，用课堂未讲解的 <code>creativeEffect</code> 实现电影选片墙效果。
+        </p>
+
+        <pre class="lsy-code"><code>creativeEffect: {
+  // 上一张：缩小、左移、向后 240px、绕 Y 轴转 26 度
+  prev: {
+    translate: ['-38%', 0, -240],
+    rotate: [0, 26, 0],
+    scale: 0.72,
+    opacity: 0.55
+  },
+  // 下一张：放大到 0.86、右移、向后 240px、反方向转 18 度
+  next: {
+    translate: ['42%', 0, -240],
+    rotate: [0, -18, 0],
+    scale: 0.86,
+    opacity: 0.55
+  }
+}</code></pre>
+
+        <h4>prev / next 的 transform 各控制什么？</h4>
+        <ul class="lsy-list">
+          <li><code>prev</code> 描述「还没轮到、停在左边待命的那一张」的状态：向左让位、缩小、压暗，形成纵深。</li>
+          <li><code>next</code> 描述「即将进场、停在右边的那一张」的状态：向右让位、略大、反方向倾斜，作为接棒的下一幕。</li>
+          <li>当前这张始终在正中间，<code>creativeEffect</code> 只负责前后两张怎么「退场」和「候场」。</li>
+          <li><code>translate</code> 的百分比相对 <strong>slide 自身宽高</strong>，第三个数是 Z 轴的像素值（负数代表往屏幕里退）。</li>
+          <li><code>rotate</code> 是 <code>[x, y, z]</code> 三个轴的旋转角度，想让卡片歪 20 度，改 <code>rotate</code> 第二个值即可（如 <code>[0, 20, 0]</code>）。</li>
+        </ul>
+
+        <p class="lsy-answer">
+          <strong>现场可验证：</strong>演示四的按钮下方有一个「卡片倾斜角度」滑块，
+          切到 creative 后拖动它，就能实时看到 <code>prev.rotate[1]</code> 与 <code>next.rotate[1]</code> 变化带来的倾斜效果；
+          拖到 20° 即对应答辩要求。
+        </p>
+      </article>
+
+      <article class="lsy-card">
+        <h3>任务三 · 综合创作 + 超纲能力 <span class="lsy-badge">⭐⭐⭐</span></h3>
+        <p class="lsy-card-desc">
+          新增第六件展品「爱达·魔都号」（同时加入演示四与展品墙），并在展品墙加入课堂没讲过的 <code>keyboard</code> 键盘控制。
+        </p>
+        <pre class="lsy-code"><code>var lsyGallerySwiper = new Swiper('#lsyGallerySw', {
+  loop: true,
+  speed: 700,
+  slidesPerView: 1.15,
+  spaceBetween: 18,
+  keyboard: { enabled: true, onlyInViewport: true }, // 超纲能力：← / → 切换
+  pagination: { el: '#lsyGalleryPag', clickable: true },
+  navigation: { nextEl: '#lsyGalleryNext', prevEl: '#lsyGalleryPrev' },
+  breakpoints: {
+    880: { slidesPerView: 2.15, spaceBetween: 24 }
+  }
+});</code></pre>
+        <h4>三点说明</h4>
+        <ul class="lsy-list">
+          <li><code>keyboard.enabled</code> 开启键盘控制，默认方向键 ← / → 就是上一个 / 下一个。</li>
+          <li><code>onlyInViewport: true</code> 表示轮播不在可视区域时按键不生效，避免和页面滚动抢事件。</li>
+          <li>键盘事件绑定在轮播容器上，所以容器需要 <code>tabindex="0"</code> 才能获得焦点，点击轮播即可聚焦。</li>
+        </ul>
+
+        <h4>与 AI 的关键对话记录</h4>
+        <div class="lsy-prompt">
+          <h4>第 1 轮提示词</h4>
+          <p class="lsy-quote">
+            我给一个 Swiper 11 轮播加键盘控制，用 ← / → 切换上一张和下一张，需要哪些配置？
+            顺便说明为什么有时按键没反应。
+          </p>
+          <h4>AI 回答（节选）</h4>
+          <p class="lsy-answer">
+            加 <code>keyboard: { enabled: true }</code>，Swiper 会自动监听容器的键盘事件；
+            如果按键没反应，通常是因为容器没有获得焦点。
+          </p>
+          <h4>我的追问</h4>
+          <p class="lsy-quote">只写 <code>keyboard: true</code> 和写成对象的区别是什么？只想在轮播出现在屏幕里时才响应按键，该怎么写？</p>
+          <h4>AI 回答（节选）</h4>
+          <p class="lsy-answer">
+            对象写法更明确，并且可以加 <code>onlyInViewport: true</code>；
+            布尔写法无法关闭这个开关，不同版本兼容性也不一致。
+          </p>
+          <h4>验证与改动</h4>
+          <ul class="lsy-list">
+            <li>第一版直接贴上 AI 代码，按键没反应——原因是 AI 没提醒容器要能获得焦点。</li>
+            <li>我给容器补了 <code>tabindex="0"</code>，并加了「点击轮播自动聚焦」的 JS，实测 ← / → 可切换且页面不滚动 ✔</li>
+          </ul>
+        </div>
+
+        <h4>答辩四连问 · 我的回答</h4>
+        <ul class="lsy-list">
+          <li>这段代码什么意思：开启后 Swiper 监听容器键盘事件，← 调用 <code>slidePrev()</code>、→ 调用 <code>slideNext()</code>；<code>onlyInViewport</code> 让没出现在屏幕里的轮播不响应按键。</li>
+          <li>AI 第一次哪里不对、我改了什么：漏了 <code>tabindex</code>，容器拿不到焦点所以按键无效；我补上 <code>tabindex="0"</code> 并绑定点击聚焦。</li>
+          <li>新参数的作用：<code>enabled</code> 是键盘控制的开关，<code>onlyInViewport</code> 限制只在可视区域内生效。</li>
+          <li>现场把 <code>delay</code> 改成 5000：每 5 秒才翻一页，翻页变慢；<code>loop</code>、分页器、导航按钮都不受影响。</li>
+        </ul>
+
+        <p class="lsy-answer">
+          <strong>现场改参数预演：</strong>把 <code>autoplay.delay</code> 从 3200 改成 5000，
+          预期是每张停留时间变长、翻页变慢，其他行为不变。
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="lsy-footer">
+    <p>大国重器光影展 · Swiper 11 课堂任务实践</p>
+    <p>制作：刘思媛 · 高职高级网页设计</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/swiper-lesson.js"></script>
+</body>
+</html>

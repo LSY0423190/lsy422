@@ -1,0 +1,495 @@
+/* 作者：刘思媛  功能：大国重器光影展页面整体样式 */
+
+:root {
+  --lsy-bg: #06090f;
+  --lsy-bg-2: #0b1120;
+  --lsy-card: #111a2b;
+  --lsy-line: rgba(255, 255, 255, 0.09);
+  --lsy-gold: #e8b96a;
+  --lsy-gold-2: #f8dfae;
+  --lsy-cyan: #5fd3ff;
+  --lsy-text: #e9eefa;
+  --lsy-sub: #97a5bd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, sans-serif;
+  color: var(--lsy-text);
+  background:
+    radial-gradient(900px 500px at 12% -6%, rgba(232, 185, 106, 0.16), transparent 60%),
+    radial-gradient(800px 480px at 88% 4%, rgba(95, 211, 255, 0.12), transparent 62%),
+    linear-gradient(180deg, var(--lsy-bg), var(--lsy-bg-2) 55%, var(--lsy-bg));
+  background-attachment: fixed;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 首屏 */
+.lsy-hero {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 92px 24px 56px;
+  text-align: center;
+}
+
+.lsy-hero-kicker {
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: var(--lsy-gold);
+  text-transform: uppercase;
+}
+
+.lsy-hero-title {
+  margin: 18px 0 14px;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.12;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+}
+
+.lsy-hero-title span {
+  margin-left: 0.35em;
+  background: linear-gradient(100deg, var(--lsy-gold-2), var(--lsy-gold) 45%, #b5852f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lsy-hero-desc {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--lsy-sub);
+  font-size: 15px;
+}
+
+.lsy-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.lsy-hero-tags span {
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--lsy-gold-2);
+  border: 1px solid rgba(232, 185, 106, 0.35);
+  border-radius: 999px;
+  background: rgba(232, 185, 106, 0.08);
+}
+
+/* 顶部锚点导航 */
+.lsy-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(6, 9, 15, 0.78);
+  border-top: 1px solid var(--lsy-line);
+  border-bottom: 1px solid var(--lsy-line);
+  backdrop-filter: blur(14px);
+}
+
+.lsy-nav a {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--lsy-sub);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: color 0.25s, background 0.25s;
+}
+
+.lsy-nav a:hover {
+  color: var(--lsy-gold-2);
+  background: rgba(232, 185, 106, 0.12);
+}
+
+/* 主体与章节 */
+.lsy-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 24px 40px;
+}
+
+.lsy-section {
+  padding: 46px 0 12px;
+}
+
+.lsy-sec-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.lsy-sec-num {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1206;
+  background: linear-gradient(140deg, var(--lsy-gold-2), var(--lsy-gold));
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(232, 185, 106, 0.24);
+}
+
+.lsy-sec-head h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  letter-spacing: 0.02em;
+}
+
+.lsy-sec-desc {
+  margin-bottom: 22px;
+  color: var(--lsy-sub);
+  font-size: 14.5px;
+}
+
+.lsy-sec-desc strong {
+  color: var(--lsy-gold-2);
+}
+
+code {
+  padding: 1px 6px;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  color: var(--lsy-gold-2);
+  background: rgba(232, 185, 106, 0.1);
+  border-radius: 5px;
+}
+
+/* 轮播容器 */
+.lsy-demo,
+.lsy-gallery {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0a0f19;
+  border: 1px solid var(--lsy-line);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55);
+}
+
+.lsy-gallery {
+  aspect-ratio: 16 / 9;
+}
+
+.lsy-gallery:focus {
+  outline: 2px solid var(--lsy-gold);
+  outline-offset: 4px;
+}
+
+.lsy-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.lsy-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lsy-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(4, 7, 13, 0.86) 100%);
+  pointer-events: none;
+}
+
+.lsy-slide-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 26px 28px;
+}
+
+.lsy-slide-cap h3 {
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  letter-spacing: 0.04em;
+}
+
+.lsy-slide-cap p {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #cfd9ea;
+}
+
+/* 分页器与导航按钮 */
+.lsy-pag {
+  bottom: 12px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: #ffffff;
+  opacity: 0.35;
+  transition: width 0.25s, background 0.25s, opacity 0.25s;
+}
+
+.swiper-pagination-bullet-active {
+  width: 22px;
+  border-radius: 5px;
+  background: var(--lsy-gold);
+  opacity: 1;
+}
+
+.lsy-nav-btn {
+  width: 40px;
+  height: 40px;
+  color: var(--lsy-gold-2);
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid var(--lsy-line);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  transition: background 0.25s, transform 0.25s;
+}
+
+.lsy-nav-btn:hover {
+  background: rgba(232, 185, 106, 0.2);
+  transform: scale(1.06);
+}
+
+.lsy-nav-btn::after {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 效果按钮 */
+.lsy-effect-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.lsy-effect-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--lsy-sub);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--lsy-line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.lsy-effect-btn:hover {
+  color: var(--lsy-text);
+  border-color: rgba(232, 185, 106, 0.5);
+}
+
+.lsy-effect-btn--active {
+  color: #1a1206;
+  font-weight: 700;
+  background: linear-gradient(140deg, var(--lsy-gold-2), var(--lsy-gold));
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(232, 185, 106, 0.28);
+}
+
+/* creative 角度微调控件 */
+.lsy-tune {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--lsy-sub);
+  background: rgba(95, 211, 255, 0.05);
+  border: 1px dashed rgba(95, 211, 255, 0.28);
+  border-radius: 12px;
+}
+
+.lsy-tune-label b {
+  color: var(--lsy-gold-2);
+  font-size: 15px;
+}
+
+.lsy-tune-range {
+  width: 180px;
+  accent-color: var(--lsy-gold);
+  cursor: pointer;
+}
+
+.lsy-tune-hint {
+  font-size: 12.5px;
+  color: #7f8ea6;
+}
+
+/* 代码块 */
+.lsy-code {
+  margin-top: 18px;
+  padding: 16px 18px;
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-size: 12.8px;
+  line-height: 1.72;
+  color: #cfe4ff;
+  background: rgba(6, 10, 18, 0.86);
+  border: 1px solid var(--lsy-line);
+  border-left: 3px solid var(--lsy-gold);
+  border-radius: 12px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.lsy-code code {
+  padding: 0;
+  color: inherit;
+  background: none;
+  font-size: inherit;
+}
+
+.lsy-tip {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--lsy-sub);
+}
+
+/* 任务交付卡片 */
+.lsy-card {
+  margin-top: 22px;
+  padding: 26px 26px 22px;
+  background: linear-gradient(180deg, rgba(23, 33, 51, 0.92), rgba(13, 19, 31, 0.92));
+  border: 1px solid var(--lsy-line);
+  border-radius: 18px;
+}
+
+.lsy-card h3 {
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.lsy-card h4 {
+  margin: 18px 0 8px;
+  font-size: 14px;
+  color: var(--lsy-gold-2);
+}
+
+.lsy-badge {
+  margin-left: 6px;
+  font-size: 12px;
+  color: var(--lsy-gold);
+  vertical-align: middle;
+}
+
+.lsy-card-desc {
+  margin-top: 8px;
+  color: var(--lsy-sub);
+  font-size: 14px;
+}
+
+.lsy-prompt {
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--lsy-line);
+}
+
+.lsy-quote {
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: #d6e2f5;
+  background: rgba(95, 211, 255, 0.06);
+  border-left: 3px solid var(--lsy-cyan);
+  border-radius: 0 10px 10px 0;
+}
+
+.lsy-list {
+  margin: 6px 0 0 18px;
+  font-size: 13.5px;
+  color: var(--lsy-sub);
+}
+
+.lsy-list li {
+  margin: 5px 0;
+}
+
+.lsy-list strong {
+  color: var(--lsy-gold-2);
+}
+
+.lsy-answer {
+  margin-top: 18px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: #d6e2f5;
+  background: rgba(232, 185, 106, 0.08);
+  border-radius: 10px;
+}
+
+.lsy-answer strong {
+  color: var(--lsy-gold-2);
+}
+
+/* 页脚 */
+.lsy-footer {
+  padding: 34px 24px 44px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #6f7d93;
+  border-top: 1px solid var(--lsy-line);
+}
+
+/* 小屏适配 */
+@media (max-width: 640px) {
+  .lsy-hero {
+    padding: 64px 18px 40px;
+  }
+
+  .lsy-main {
+    padding: 18px 18px 32px;
+  }
+
+  .lsy-slide-cap {
+    padding: 18px 18px;
+  }
+
+  .lsy-slide-cap p {
+    font-size: 12px;
+  }
+
+  .lsy-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .lsy-nav a {
+    white-space: nowrap;
+  }
+
+  .lsy-card {
+    padding: 20px 18px;
+  }
+
+  .lsy-nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
