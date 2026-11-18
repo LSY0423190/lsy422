@@ -1,0 +1,56 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-18
+  使用大模型：Kimi-K3
+  功能名称：移动端摇一摇抽菜谱页（含权限申请与降级方案）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摇一摇 · 抽今日菜谱</title>
+  <link rel="stylesheet" href="css/lsy422-mobile.css">
+</head>
+<body>
+
+  <div class="lsy422-shell">
+    <p class="lsy422-kicker">任务四 · 设备传感器</p>
+    <h1 class="lsy422-title">摇一摇<br>抽今日菜谱</h1>
+    <p class="lsy422-sub">
+      拿起手机连续摇动，从八道家常菜里随机抽一道；一次摇动只会抽一次，触发后进入 1.5 秒冷却。
+    </p>
+
+    <div class="lsy422-shake-stage">
+      <span class="lsy422-shake-icon" id="lsy422ShakeIcon">📱</span>
+    </div>
+
+    <div class="lsy422-meter">
+      <div class="lsy422-meter-bar" id="lsy422Meter"></div>
+    </div>
+    <div class="lsy422-hud">
+      <span>合成加速度 <b id="lsy422Value">—</b></span>
+      <span>触发阈值 18</span>
+    </div>
+
+    <div class="lsy422-result" id="lsy422Result">
+      <span class="lsy422-result-emoji">🍽️</span>
+      <p class="lsy422-result-text">摇一摇手机，看看今天吃什么</p>
+    </div>
+
+    <div class="lsy422-actions">
+      <button class="lsy422-btn" id="lsy422FallbackBtn" type="button">点我抽一次</button>
+      <button class="lsy422-btn lsy422-btn-ghost" id="lsy422PermitBtn" type="button" hidden>开启传感器权限</button>
+    </div>
+
+    <p class="lsy422-status" id="lsy422Status">正在等待传感器数据…</p>
+
+    <p class="lsy422-note">
+      为什么要做降级：传感器事件只有在真机上才有数据，电脑浏览器、部分安卓机或 iOS 未授权时都收不到。
+      所以页面必须保留「点我抽一次」按钮，并给出「当前设备不支持」的提示，不能出现报错或白屏。
+    </p>
+  </div>
+
+  <script src="js/lsy422-sensor.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-18
+  使用大模型：Kimi-K3
+  功能名称：移动端左右滑动手势美食卡片页
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中华美食 · 左右滑动手势卡片</title>
+  <link rel="stylesheet" href="css/lsy422-mobile.css">
+</head>
+<body>
+
+  <div class="lsy422-shell">
+    <p class="lsy422-kicker">任务二 · 手势识别</p>
+    <h1 class="lsy422-title">中华美食<br>左右滑动换一道</h1>
+    <p class="lsy422-sub">
+      在卡片上左右滑动：左滑看下一道，右滑回上一道。短距离误触不会切换，快速连滑也只走一张。
+    </p>
+    <p class="lsy422-note">📱 请用手机或浏览器「设备模式」的触摸模拟操作，桌面鼠标拖动不生效。</p>
+
+    <!-- 手势区域：touch-action: pan-y 让纵向仍可滚动页面 -->
+    <div class="lsy422-gesture-viewport" id="lsy422Viewport">
+      <div class="lsy422-gesture-track" id="lsy422Track">
+
+        <article class="lsy422-dish lsy422-g1">
+          <div class="lsy422-dish-head">
+            <span class="lsy422-dish-no">01 / 04</span>
+            <span class="lsy422-dish-emoji">🦆</span>
+          </div>
+          <div>
+            <h2 class="lsy422-dish-name">北京烤鸭</h2>
+            <p class="lsy422-dish-desc">果木炭火挂炉，皮脆肉嫩；片成薄片裹进荷叶饼，抹上甜面酱与葱丝。</p>
+            <div class="lsy422-dish-tags"><span>京菜</span><span>招牌</span></div>
+          </div>
+        </article>
+
+        <article class="lsy422-dish lsy422-g2">
+          <div class="lsy422-dish-head">
+            <span class="lsy422-dish-no">02 / 04</span>
+            <span class="lsy422-dish-emoji">🌶️</span>
+          </div>
+          <div>
+            <h2 class="lsy422-dish-name">麻婆豆腐</h2>
+            <p class="lsy422-dish-desc">郫县豆瓣配汉源花椒，麻、辣、烫、香、酥、嫩、鲜、活，一碗白饭见底。</p>
+            <div class="lsy422-dish-tags"><span>川菜</span><span>下饭</span></div>
+          </div>
+        </article>
+
+        <article class="lsy422-dish lsy422-g3">
+          <div class="lsy422-dish-head">
+            <span class="lsy422-dish-no">03 / 04</span>
+            <span class="lsy422-dish-emoji">🥟</span>
+          </div>
+          <div>
+            <h2 class="lsy422-dish-name">水晶虾饺</h2>
+            <p class="lsy422-dish-desc">澄面薄皮透出粉红虾仁，一口一个，广式早茶「四大天王」之首。</p>
+            <div class="lsy422-dish-tags"><span>粤菜</span><span>早茶</span></div>
+          </div>
+        </article>
+
+        <article class="lsy422-dish lsy422-g4">
+          <div class="lsy422-dish-head">
+            <span class="lsy422-dish-no">04 / 04</span>
+            <span class="lsy422-dish-emoji">🍜</span>
+          </div>
+          <div>
+            <h2 class="lsy422-dish-name">兰州牛肉面</h2>
+            <p class="lsy422-dish-desc">一清二白三红四绿五黄；拉面师傅手里，从毛细到韭叶不过几秒。</p>
+            <div class="lsy422-dish-tags"><span>西北</span><span>手工</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="lsy422-gesture-foot">
+      <div class="lsy422-dots" id="lsy422Dots"></div>
+      <div class="lsy422-counter">第 <b id="lsy422Counter">1</b> / 4 张</div>
+    </div>
+  </div>
+
+  <!-- 边界提示 -->
+  <div class="lsy422-toast" id="lsy422Toast">已经是最后一张了</div>
+
+  <script src="js/lsy422-gesture.js"></script>
+</body>
+</html>

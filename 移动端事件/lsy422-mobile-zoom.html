@@ -1,0 +1,54 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-18
+  使用大模型：Kimi-K3
+  功能名称：移动端图片查看器（双指缩放、双击放大、单指拖动）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片查看器 · 双指缩放与双击放大</title>
+  <link rel="stylesheet" href="css/lsy422-mobile.css">
+</head>
+<body>
+
+  <div class="lsy422-shell">
+    <p class="lsy422-kicker">任务三 · 多指手势</p>
+    <h1 class="lsy422-title">图片查看器<br>双指缩放 · 双击放大</h1>
+    <p class="lsy422-sub">
+      双指开合缩放 1x～4x，以两指中点为准；双击在 1x / 2x 之间切换；放大后单指拖动看细节，缩回 1x 自动居中。
+    </p>
+
+    <!-- 查看器：手势区域加 touch-action:none，手势全部交给脚本 -->
+    <div class="lsy422-zoom-stage" id="lsy422Stage">
+      <img
+        class="lsy422-zoom-img"
+        id="lsy422Img"
+        src="img/lsy422-viewer.jpg"
+        alt="空间站与地球的高清照片">
+      <span class="lsy422-badge">双指缩放请用手机打开</span>
+    </div>
+
+    <div class="lsy422-zoom-hud">
+      <span>当前缩放 <b class="lsy422-zoom-scale" id="lsy422ScaleText">1.00x</b></span>
+      <button class="lsy422-btn lsy422-btn-sm" id="lsy422ResetBtn" type="button">还原</button>
+    </div>
+
+    <div class="lsy422-chip-row">
+      <span>双指 1x～4x</span>
+      <span>双击 1x ↔ 2x</span>
+      <span>放大后单指拖动</span>
+      <span>松手限制在边界内</span>
+    </div>
+
+    <p class="lsy422-note">
+      🧭 缩放时先记录两指初始间距与初始缩放倍数，之后每一帧都用「当前间距 ÷ 初始间距」计算倍数，
+      并按两指中点反推位移，所以图片始终跟着手指，不会突然跳走。
+    </p>
+  </div>
+
+  <script src="js/lsy422-zoom.js"></script>
+</body>
+</html>
