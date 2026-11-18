@@ -432,3 +432,123 @@ body {
 .lsy422-status.lsy422-warn {
   color: #ffb08a;
 }
+
+/* ========== 四关整合页：选项卡 + 事件探针 ========== */
+
+.lsy422-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.lsy422-tab {
+  padding: 10px 4px;
+  border: 1px solid var(--lsy422-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--lsy422-dim);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.lsy422-tab.lsy422-on {
+  color: var(--lsy422-ink);
+  border-color: rgba(233, 181, 88, 0.6);
+  background: rgba(233, 181, 88, 0.14);
+  font-weight: 600;
+}
+
+.lsy422-panel {
+  display: none;
+  padding-top: 20px;
+}
+
+.lsy422-panel.lsy422-on {
+  display: block;
+  animation: lsy422Fade 0.25s ease both;
+}
+
+@keyframes lsy422Fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.lsy422-panel-title {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.lsy422-panel-desc {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--lsy422-dim);
+}
+
+.lsy422-pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin-top: 14px;
+  border: 1px dashed var(--lsy422-line);
+  border-radius: 20px;
+  background: #0a0810;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.lsy422-pad.lsy422-active {
+  border-color: rgba(233, 181, 88, 0.6);
+  color: var(--lsy422-gold);
+}
+
+.lsy422-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--lsy422-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.lsy422-stats b {
+  color: var(--lsy422-ink);
+  font-weight: 600;
+}
+
+.lsy422-log {
+  height: 180px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  overflow-y: auto;
+  border: 1px solid var(--lsy422-line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #cfc4cb;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.9;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lsy422-log-tip {
+  margin: 0;
+  color: var(--lsy422-dim);
+}
+
+.lsy422-log-line {
+  margin: 0;
+}
+
+.lsy422-probe-actions {
+  margin-top: 12px;
+}

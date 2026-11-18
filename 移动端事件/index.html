@@ -1,0 +1,175 @@
+<!--
+  作者：刘思媛
+  建立时间：2026-11-18
+  使用大模型：Kimi-K3
+  功能名称：移动端触摸交互四关整合页（事件探针·滑动卡片·图片查看器·摇一摇）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动端触摸交互 · 四关一页</title>
+  <link rel="stylesheet" href="css/lsy422-mobile.css">
+</head>
+<body>
+
+  <div class="lsy422-shell">
+    <p class="lsy422-kicker">高级网页设计 · 移动端交互</p>
+    <h1 class="lsy422-title">触摸交互四关<br>一页跑通</h1>
+    <p class="lsy422-sub">
+      事件探针 → 滑动卡片 → 双指缩放 → 摇一摇。四个任务放在同一页，请用手机打开逐个体验。
+    </p>
+
+    <!-- 四关切换 -->
+    <nav class="lsy422-tabs" id="lsy422Tabs">
+      <button type="button" class="lsy422-tab lsy422-on" data-panel="lsy422PanelProbe">① 探针</button>
+      <button type="button" class="lsy422-tab" data-panel="lsy422PanelGesture">② 卡片</button>
+      <button type="button" class="lsy422-tab" data-panel="lsy422PanelZoom">③ 看图</button>
+      <button type="button" class="lsy422-tab" data-panel="lsy422PanelSensor">④ 摇一摇</button>
+    </nav>
+
+    <!-- 任务一：事件探针 -->
+    <section class="lsy422-panel lsy422-on" id="lsy422PanelProbe">
+      <h2 class="lsy422-panel-title">任务一 · 事件探针</h2>
+      <p class="lsy422-panel-desc">
+        在黑色区域按一下、拖一拖、再抬起，日志会按真实顺序记录。重点观察：touchend 之后还会补发一次 click。
+      </p>
+
+      <div class="lsy422-pad" id="lsy422Pad">用手指在这里按下并拖动</div>
+
+      <div class="lsy422-stats">
+        <span>touchstart <b id="lsy422CountStart">0</b></span>
+        <span>touchmove <b id="lsy422CountMove">0</b></span>
+        <span>touchend <b id="lsy422CountEnd">0</b></span>
+        <span>touchcancel <b id="lsy422CountCancel">0</b></span>
+        <span>click <b id="lsy422CountClick">0</b></span>
+      </div>
+
+      <div class="lsy422-log" id="lsy422Log">
+        <p class="lsy422-log-tip">等待你的第一次触摸……</p>
+      </div>
+
+      <div class="lsy422-probe-actions">
+        <button class="lsy422-btn lsy422-btn-sm lsy422-btn-ghost" id="lsy422ClearBtn" type="button">清空日志</button>
+      </div>
+    </section>
+
+    <!-- 任务二：滑动手势卡片 -->
+    <section class="lsy422-panel" id="lsy422PanelGesture">
+      <h2 class="lsy422-panel-title">任务二 · 左右滑动换一道</h2>
+      <p class="lsy422-panel-desc">左滑看下一道，右滑回上一道；短距离误触不切换，快速连滑也只走一张。</p>
+
+      <div class="lsy422-gesture-viewport" id="lsy422Viewport">
+        <div class="lsy422-gesture-track" id="lsy422Track">
+
+          <article class="lsy422-dish lsy422-g1">
+            <div class="lsy422-dish-head">
+              <span class="lsy422-dish-no">01 / 04</span>
+              <span class="lsy422-dish-emoji">🦆</span>
+            </div>
+            <div>
+              <h2 class="lsy422-dish-name">北京烤鸭</h2>
+              <p class="lsy422-dish-desc">果木炭火挂炉，皮脆肉嫩；片成薄片裹进荷叶饼，抹上甜面酱与葱丝。</p>
+              <div class="lsy422-dish-tags"><span>京菜</span><span>招牌</span></div>
+            </div>
+          </article>
+
+          <article class="lsy422-dish lsy422-g2">
+            <div class="lsy422-dish-head">
+              <span class="lsy422-dish-no">02 / 04</span>
+              <span class="lsy422-dish-emoji">🌶️</span>
+            </div>
+            <div>
+              <h2 class="lsy422-dish-name">麻婆豆腐</h2>
+              <p class="lsy422-dish-desc">郫县豆瓣配汉源花椒，麻、辣、烫、香、酥、嫩、鲜、活，一碗白饭见底。</p>
+              <div class="lsy422-dish-tags"><span>川菜</span><span>下饭</span></div>
+            </div>
+          </article>
+
+          <article class="lsy422-dish lsy422-g3">
+            <div class="lsy422-dish-head">
+              <span class="lsy422-dish-no">03 / 04</span>
+              <span class="lsy422-dish-emoji">🥟</span>
+            </div>
+            <div>
+              <h2 class="lsy422-dish-name">水晶虾饺</h2>
+              <p class="lsy422-dish-desc">澄面薄皮透出粉红虾仁，一口一个，广式早茶「四大天王」之首。</p>
+              <div class="lsy422-dish-tags"><span>粤菜</span><span>早茶</span></div>
+            </div>
+          </article>
+
+          <article class="lsy422-dish lsy422-g4">
+            <div class="lsy422-dish-head">
+              <span class="lsy422-dish-no">04 / 04</span>
+              <span class="lsy422-dish-emoji">🍜</span>
+            </div>
+            <div>
+              <h2 class="lsy422-dish-name">兰州牛肉面</h2>
+              <p class="lsy422-dish-desc">一清二白三红四绿五黄；拉面师傅手里，从毛细到韭叶不过几秒。</p>
+              <div class="lsy422-dish-tags"><span>西北</span><span>手工</span></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="lsy422-gesture-foot">
+        <div class="lsy422-dots" id="lsy422Dots"></div>
+        <div class="lsy422-counter">第 <b id="lsy422Counter">1</b> / 4 张</div>
+      </div>
+    </section>
+
+    <!-- 任务三：图片查看器 -->
+    <section class="lsy422-panel" id="lsy422PanelZoom">
+      <h2 class="lsy422-panel-title">任务三 · 双指缩放 · 双击放大</h2>
+      <p class="lsy422-panel-desc">双指开合缩放 1x～4x，双击在 1x / 2x 间切换，放大后单指拖动看细节。</p>
+
+      <div class="lsy422-zoom-stage" id="lsy422Stage">
+        <img class="lsy422-zoom-img" id="lsy422Img" src="img/lsy422-viewer.jpg" alt="空间站与地球的高清照片">
+        <span class="lsy422-badge">双指缩放请用手机打开</span>
+      </div>
+
+      <div class="lsy422-zoom-hud">
+        <span>当前缩放 <b class="lsy422-zoom-scale" id="lsy422ScaleText">1.00x</b></span>
+        <button class="lsy422-btn lsy422-btn-sm" id="lsy422ResetBtn" type="button">还原</button>
+      </div>
+    </section>
+
+    <!-- 任务四：摇一摇 -->
+    <section class="lsy422-panel" id="lsy422PanelSensor">
+      <h2 class="lsy422-panel-title">任务四 · 摇一摇抽菜谱</h2>
+      <p class="lsy422-panel-desc">连续摇动手机随机抽一道菜；一次摇动只触发一次，没有传感器时可以手动抽。</p>
+
+      <div class="lsy422-shake-stage">
+        <span class="lsy422-shake-icon" id="lsy422ShakeIcon">📱</span>
+      </div>
+
+      <div class="lsy422-meter">
+        <div class="lsy422-meter-bar" id="lsy422Meter"></div>
+      </div>
+      <div class="lsy422-hud">
+        <span>合成加速度 <b id="lsy422Value">—</b></span>
+        <span>触发阈值 18</span>
+      </div>
+
+      <div class="lsy422-result" id="lsy422Result">
+        <span class="lsy422-result-emoji">🍽️</span>
+        <p class="lsy422-result-text">摇一摇手机，看看今天吃什么</p>
+      </div>
+
+      <div class="lsy422-actions">
+        <button class="lsy422-btn" id="lsy422FallbackBtn" type="button">点我抽一次</button>
+        <button class="lsy422-btn lsy422-btn-ghost" id="lsy422PermitBtn" type="button" hidden>开启传感器权限</button>
+      </div>
+
+      <p class="lsy422-status" id="lsy422Status">正在等待传感器数据…</p>
+    </section>
+  </div>
+
+  <!-- 边界提示 -->
+  <div class="lsy422-toast" id="lsy422Toast">已经是最后一张了</div>
+
+  <script src="js/lsy422-mobile-events.js"></script>
+</body>
+</html>
