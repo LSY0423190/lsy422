@@ -552,3 +552,30 @@ body {
 .lsy422-probe-actions {
   margin-top: 12px;
 }
+
+/* ========== 任务五：演示视频播放区（刘思媛） ========== */
+
+/* 视频区块与上方内容之间用分割线隔开，常驻显示、不受选项卡控制 */
+.lsy422-video-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--lsy422-line);
+}
+
+/* 播放区容器：圆角 + 阴影，让视频四角被裁成圆角 */
+.lsy422-video-wrap {
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #07060a;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.85);
+}
+
+/* 竖屏视频按高度撑满容器宽度，播放前不留空白 */
+.lsy422-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  background: #000;
+}
